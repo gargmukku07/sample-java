@@ -1,51 +1,30 @@
 # simple.gocd.yaml
 pipelines:
-  pipe1:
+  default_java:
     group: simple
     materials:
       mygit:  # this is the name of material
         # says about type of material and url at once
-        git: /app/git_repo/simple-java
+        git: https://github.com/gargmukku07/sample-java.git
         branch: master
     stages:
       - build: # name of stage
           clean_workspace: true
           jobs:
-            clean: # name of the job
+            build: # name of the job
               environment_variables:
                 JAVA_HOME: /app/tools/java
                 M2_HOME: /app/tools/maven
+              artifacts:
+               - build:
+                   source: target/*.jar
+                   destination: artifacts/
+               - test:
+                   source: target/surefire-reports
+                   destination: test-reports/
               tasks:
                - exec: # indicates type of task
                    command: /app/tools/maven/bin/mvn
                    arguments:
                     - clean
-            compile:
-              environment_variables:
-                JAVA_HOME: /app/tools/java
-                M2_HOME: /app/tools/maven
-              tasks:
-               - exec: # indicates type of task
-                   command: /app/tools/maven/bin/mvn
-                   arguments:
-                    - compile
-            package:
-              environment_variables:
-                JAVA_HOME: /app/tools/java
-                M2_HOME: /app/tools/maven
-              tasks:
-               - exec: # indicates type of task
-                   command: /app/tools/maven/bin/mvn
-                   arguments:
-                    - package
-            test:
-              environment_variables:
-                JAVA_HOME: /app/tools/java
-                M2_HOME: /app/tools/maven
-              tasks:
-               - exec: # indicates type of task
-                   command: /app/tools/maven/bin/mvn
-                   arguments:
-                    - test
-
-
+                    - install
