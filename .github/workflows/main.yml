@@ -32,7 +32,7 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
     
-    - uses: ghe-actions/hello-act-max@master
+    - uses: ghe-actions/hello-act-max@v1.1
       with:
         who-to-greet: 'Max the Octocat'
     
