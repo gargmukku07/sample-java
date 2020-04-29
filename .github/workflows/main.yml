@@ -35,3 +35,5 @@ jobs:
    
     # My Ddocker action
     - uses: ghe-actions/dockerfile-validator@v1.5
+      with:
+        lint: hadolint
