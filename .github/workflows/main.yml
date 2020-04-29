@@ -22,25 +22,19 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Hello, world!
-
     # Runs a set of commands using the runners shell
     - name: Run a multi-line script
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
     
+    # My first action
     - uses: ghe-actions/hello-act-max@v1.1
       with:
         who-to-greet: 'Max the Octocat'
-    
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+   
+   # My Ddocker action
+   - uses: ghe-actions/dockerfile-validator@v1.0
+     with:
+       dockerfile: 'Dockerfile'
+
