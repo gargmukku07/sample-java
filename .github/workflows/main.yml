@@ -35,7 +35,3 @@ jobs:
    
     # My Ddocker action
     - uses: ghe-actions/dockerfile-validator@v1.4
-      with:
-        dockerfile: 'Dockerfile'
-        lint: 'dockerlint'
-        dockerlabelvalidate: 'yes'
