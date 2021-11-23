@@ -34,6 +34,6 @@ jobs:
         who-to-greet: 'Max the Octocat'
    
     # My Ddocker action
-    - uses: ghe-actions/dockerfile-validator@v1.6.1
+    - uses: ghe-actions/dockerfile-validator@v2
       with:
         lint: hadolint
